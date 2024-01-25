@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Clientes";
+}
+@using Customers.Application.Customers.Queries
+
+@model IEnumerable<CustomerVM>
+
+<div class="row mb-2">
+    <div class="col-md-12">
+        <a href="~/Customer/Create" class="btn btn-primary float-end" title="Alta de cliente"><span class="fa fa-file"></span> Alta de cliente</a>
+    </div>
+</div>
+<main>
+
+    <table id="example" class="display" style="width:100%">
+        <caption>Lista de clientes</caption>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(customer => customer.DocumentoIdentificacion)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Nombre)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Apellidos)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Email)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Telefono)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Pais)</th>
+                <th> @Html.DisplayNameFor(customer => customer.FechaNacimiento)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Gender)</th>
+                <th> @Html.DisplayNameFor(customer => customer.NombreEmpresa)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Intereses)</th>
+                <th> @Html.DisplayNameFor(customer => customer.CuentaTwitter)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.DocumentoIdentificacion</td>
+                    <td>@customer.Nombre</td>
+                    <td>@customer.Apellidos</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.Telefono</td>
+                    <td>@customer.Pais</td>
+                    <td>@customer.FechaNacimiento</td>
+                    <td>@customer.Gender</td>
+                    <td>@customer.NombreEmpresa</td>
+                    <td>@customer.InteresesSeparated</td>
+                    <td>@customer.CuentaTwitter</td>
+                    <td>
+
+                        <a href="~/Customer/Edit/@customer.Id" class="btn btn-primary" title="Modifcar"><span class="fa fa-edit"></span></a>
+                        <a href="~/Customer/Delete/@customer.Id" class="btn btn-danger" title="Borrar"><span class="fa fa-eraser"></span></a>
+
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>@Html.DisplayNameFor(customer => customer.DocumentoIdentificacion)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Nombre)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Apellidos)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Email)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Telefono)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Pais)</th>
+                <th> @Html.DisplayNameFor(customer => customer.FechaNacimiento)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Gender)</th>
+                <th> @Html.DisplayNameFor(customer => customer.NombreEmpresa)</th>
+                <th> @Html.DisplayNameFor(customer => customer.Intereses)</th>
+                <th> @Html.DisplayNameFor(customer => customer.CuentaTwitter)</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+    </table>
+</main>
+
+@section scripts{
+    @Scripts.Render("~/bundles/customer")
+}
+

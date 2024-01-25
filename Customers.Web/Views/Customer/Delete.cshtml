@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Borrar cliente";
+}
+@using Customers.Application.Customers.Queries
+
+
+@model CustomerVM
+
+
+<div class="card">
+    <div class="card-header">
+        Borrar cliente
+    </div>
+    <div class="card-body">
+
+        
+        <form action="~/Customer/DeleteComplete/@Model.Id" method="post" id="form" name="form" class="row g-3">
+            @Html.AntiForgeryToken()
+
+
+
+            <div class="col-md-2">
+
+
+                <label for="dni" class="form-label">
+                    @Html.DisplayNameFor(customer => customer.DocumentoIdentificacion)
+                </label>
+                @Html.TextBoxFor(customer => customer.DocumentoIdentificacion, new { @class = "form-control", required = true, disabled = true })
+                @Html.ValidationMessageFor(customer => customer.DocumentoIdentificacion)
+
+            </div>
+            <div class="col-md-4">
+                <label for="Nombre" class="form-label">
+                    @Html.DisplayNameFor(customer => customer.Nombre)
+                </label>
+                @Html.TextBoxFor(customer => customer.Nombre, new { @class = "form-control", required = true, disabled = true })
+                @Html.ValidationMessageFor(customer => customer.Nombre)
+            </div>
+            <div class="col-md-6">
+                <label for="Apellidos" class="form-label">
+                    @Html.DisplayNameFor(customer => customer.Apellidos)
+                </label>
+                @Html.TextBoxFor(customer => customer.Apellidos, new { @class = "form-control", required = true, disabled = true })
+                @Html.ValidationMessageFor(customer => customer.Apellidos)
+            </div>
+
+            <div class="col-md-6">
+                <label for="Email" class="form-label">
+                    @Html.DisplayNameFor(customer => customer.Email)
+                </label>
+                @Html.TextBoxFor(customer => customer.Email, new { @class = "form-control", required = true, @type = "email", disabled = true })
+                @Html.ValidationMessageFor(customer => customer.Email)
+            </div>
+            <div class="col-md-3">
+                <label for="Telefono" class="form-label">
+                    @Html.DisplayNameFor(customer => customer.Telefono)
+                </label>
+                @Html.TextBoxFor(customer => customer.Telefono, new { @class = "form-control", required = true, @type = "tel", disabled = true })
+                @Html.ValidationMessageFor(customer => customer.Telefono)
+            </div>
+            <div class="col-md-3">
+                <label for="Pais" class="form-label">
+                    @Html.DisplayNameFor(customer => customer.Pais)
+                </label>
+                @Html.TextBoxFor(customer => customer.Pais, new { @class = "form-control", required = true, disabled = true })
+                @Html.ValidationMessageFor(customer => customer.Pais)
+            </div>
+            <div class="col-md-3">
+                <label for="FechaNacimiento" class="form-label">
+                    @Html.DisplayNameFor(customer => customer.FechaNacimiento)
+                </label>
+                @Html.TextBoxFor(customer => customer.FechaNacimiento, "{0:yyyy-dd-MM}", new { @class = "form-control", required = true, @type = "date", disabled = true })
+                @Html.ValidationMessageFor(customer => customer.FechaNacimiento)
+            </div>
+            <p>¿Está seguro de borrar el cliente?</p>
+            <div aria-label="Basic example">
+                <button type="submit" class="btn btn-primary">Borrar cliente</button>
+                <a href="~/Customer/Index" type="button" class="btn btn-link">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+
+</div>

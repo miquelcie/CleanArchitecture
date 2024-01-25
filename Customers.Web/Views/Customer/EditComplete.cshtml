@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Modificación de cliente";
+}
+
+
+@using Customers.Web.Models
+@using Customers.Domain.Enums
+
+@model CustomerModel
+
+
+<div class="card">
+    <div class="card-header">
+        Alta del cliente
+    </div>
+    <div class="card-body">
+        <form action="~/Customer/EditComplete/@Model.CurrentCustomer.Id" method="post" id="form" name="form" class="row g-3">
+            @Html.AntiForgeryToken()
+
+            <div class="col-md-2">
+
+
+                <label for="dni" class="form-label">
+                    @Html.DisplayNameFor(model => model.CurrentCustomer.DocumentoIdentificacion)
+                </label>
+                @Html.TextBoxFor(model => model.CurrentCustomer.DocumentoIdentificacion, new { @class = "form-control", required = true, disabled = true })
+                @Html.ValidationMessageFor(model => model.CurrentCustomer.DocumentoIdentificacion)
+
+            </div>
+            <div class="col-md-4">
+                <label for="Nombre" class="form-label">
+                    @Html.DisplayNameFor(model => model.CurrentCustomer.Nombre)
+                </label>
+                @Html.TextBoxFor(model => model.CurrentCustomer.Nombre, new { @class = "form-control", required = true, disabled = true })
+                @Html.ValidationMessageFor(model => model.CurrentCustomer.Nombre)
+            </div>
+            <div class="col-md-6">
+                <label for="Apellidos" class="form-label">
+                    @Html.DisplayNameFor(model => model.CurrentCustomer.Apellidos)
+                </label>
+                @Html.TextBoxFor(model => model.CurrentCustomer.Apellidos, new { @class = "form-control", required = true, disabled = true })
+                @Html.ValidationMessageFor(model => model.CurrentCustomer.Apellidos)
+            </div>
+
+            <div class="col-md-6">
+
+                <label for="NombreEmpresa" class="form-label">
+                    @Html.DisplayNameFor(model => model.CurrentCustomer.NombreEmpresa)
+                </label>
+                @Html.TextBoxFor(model => model.CurrentCustomer.NombreEmpresa, new { @class = "form-control", required = true })
+                @Html.ValidationMessageFor(model => model.CurrentCustomer.NombreEmpresa)
+
+            </div>
+            <div class="col-md-6">
+                <label for="CuentaTwitter" class="form-label">
+                    @Html.DisplayNameFor(model => model.CurrentCustomer.CuentaTwitter)
+                </label>
+                @Html.TextBoxFor(model => model.CurrentCustomer.CuentaTwitter, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CurrentCustomer.CuentaTwitter)
+            </div>
+
+
+            <div class="col-md-6">
+
+                <label for="Intereses" class="form-label">
+                    @Html.DisplayNameFor(model => model.CurrentCustomer.Intereses)
+                </label>
+                @Html.DropDownList("Intereses", Model.TiposIntereses, "Selecciona un elemento", new { @class = "form-control", multiple = true })
+                @Html.ValidationMessageFor(model => model.CurrentCustomer.Intereses)
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-check">
+                    @Html.RadioButtonFor(m => m.CurrentCustomer.Gender, @Gender.Femenino, new { @class = "form-check-input" })
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Femenino
+                    </label>
+                </div>
+                <div class="form-check">
+                    @Html.RadioButtonFor(model => model.CurrentCustomer.Gender, @Gender.Masculino, new { @class = "form-check-input" })
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Masculino
+                    </label>
+                </div>
+
+
+            </div>
+
+
+
+            <div aria-label="Basic example">
+                <button type="submit" class="btn btn-primary">Modificar cliente</button>
+                <a href="~/Customer/Index" type="button" class="btn btn-link">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+
+</div>
